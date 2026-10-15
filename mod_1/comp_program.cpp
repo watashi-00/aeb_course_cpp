@@ -2,6 +2,12 @@
 
 using namespace std;
 
+int  getValue(string label);
+void sum(int& a, int& b);
+void subtract(int& a, int& b);
+void mult(int& a, int& b);
+void divide(int& a, int& b);
+
 int main (){
 
     constexpr int size = 8;
@@ -24,11 +30,46 @@ int main (){
         return 1;
     }
 
-    
+    cout << "What operations you need?\n";
+
+    cout << "1: sum\n";
+    cout << "2: subtract\n";
+    cout << "3: multiply\n";
+    cout << "4: divide\n";
+    cout << "> ";
+
+    int operandus;
+    cin >> operandus;
+
+    switch (operandus) {
+        case 1:
+            int a = getValue("add");
+            break;
+        case 2:
+            int b = getValue("subtract");
+            break;
+        case 3:
+            int a = getValue("multiply");
+            break;
+        case 4:
+            int b = getValue("divide");
+            break;
+        default:
+            return 1;
+            break;
+    }
 
     return 0;
 }
 
+int getValue(string label) {
+    int input;
+
+    cout << "Value to " << label << ": ";
+    cin >> input;
+
+    return input;
+}
 
 void sum(int &a, int &b) {
     a += b;
@@ -42,7 +83,7 @@ void mult(int &a, int &b) {
     a *= b;
 }
 
-void div(int &a, int &b) {
+void divide(int &a, int &b) {
     if(b != 0) {
         a /= b;
     }
