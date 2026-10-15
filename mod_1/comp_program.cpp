@@ -44,15 +44,19 @@ int main (){
     switch (operandus) {
         case 1:
             int a = getValue("add");
+            sum(a, myVector[op]);
             break;
         case 2:
             int b = getValue("subtract");
+            subtract(myVector[op], b);
             break;
         case 3:
             int a = getValue("multiply");
+            mult(a, myVector[op]);
             break;
         case 4:
             int b = getValue("divide");
+            divide(myVector[op], b);
             break;
         default:
             return 1;
