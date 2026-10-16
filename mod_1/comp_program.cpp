@@ -82,6 +82,7 @@ void sum(int &value) {
 #endif
 
     value += operand;
+    cout << "Result: " << value << '\n';
 }
 
 void subtract(int &value) {
@@ -92,6 +93,7 @@ void subtract(int &value) {
 #endif
 
     value -= operand;
+    cout << "Result: " << value << '\n';
 }
 
 void mult(int &value) {
@@ -102,6 +104,7 @@ void mult(int &value) {
 #endif
 
     value *= operand;
+    cout << "Result: " << value << '\n';
 }
 
 void divide(int &value) {
@@ -113,6 +116,7 @@ void divide(int &value) {
 
     if (operand != 0) {
         value /= operand;
+        cout << "Result: " << value << '\n';
     } else {
         cout << "Error: division by zero.\n";
     }
