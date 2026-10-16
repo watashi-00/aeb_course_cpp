@@ -2,4 +2,4 @@
 !.gitignore
 !*/
 !*.cpp
-!.md
+!*.md
