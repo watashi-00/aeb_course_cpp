@@ -4,31 +4,31 @@
 
 using namespace std;
 
-int  getValue(string label);
-void sum(int& a, int& b);
-void subtract(int& a, int& b);
-void mult(int& a, int& b);
-void divide(int& a, int& b);
+int getValue(string label);
+void sum(int &a, int &b);
+void subtract(int &a, int &b);
+void mult(int &a, int &b);
+void divide(int &a, int &b);
 
-int main (){
+int main() {
 
     constexpr int size = 8;
     int myVector[size] = {};
 
-    for(int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) {
         cout << "OP " + to_string(i) + ":\t";
         cout << "[ " + to_string(myVector[i]) + " ]\n";
     }
-    
+
     int op;
     cout << "Choose one option to change: ";
     cin >> op;
 
-    if(!op) {
+    if (!op) {
         return 1;
     }
-    
-    if(op >= size || size < 0) {
+
+    if (op >= size || size < 0) {
         return 1;
     }
 
@@ -79,37 +79,37 @@ int getValue(string label) {
 
 void sum(int &a, int &b) {
 
-    #ifdef DEBUG
+#ifdef DEBUG
 
-    #endif
+#endif
 
     a += b;
 }
 
 void subtract(int &a, int &b) {
 
-    #ifdef DEBUG
+#ifdef DEBUG
 
-    #endif
+#endif
 
     a -= b;
 }
 
 void mult(int &a, int &b) {
 
-    #ifdef DEBUG
+#ifdef DEBUG
 
-    #endif
+#endif
 
     a *= b;
 }
 
 void divide(int &a, int &b) {
 
-    #ifdef DEBUG
+#ifdef DEBUG
 
-    #endif
-    if(b != 0) {
+#endif
+    if (b != 0) {
         a /= b;
     }
 }
