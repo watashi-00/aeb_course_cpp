@@ -1,5 +1,7 @@
 #include <iostream>
 
+#define DEBUG 1
+
 using namespace std;
 
 int  getValue(string label);
@@ -76,18 +78,37 @@ int getValue(string label) {
 }
 
 void sum(int &a, int &b) {
+
+    #ifdef DEBUG
+
+    #endif
+
     a += b;
 }
 
 void subtract(int &a, int &b) {
+
+    #ifdef DEBUG
+
+    #endif
+
     a -= b;
 }
 
 void mult(int &a, int &b) {
+
+    #ifdef DEBUG
+
+    #endif
+
     a *= b;
 }
 
 void divide(int &a, int &b) {
+
+    #ifdef DEBUG
+
+    #endif
     if(b != 0) {
         a /= b;
     }
