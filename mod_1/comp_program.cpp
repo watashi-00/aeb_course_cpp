@@ -60,7 +60,7 @@ int main() {
                 divide(myVector[op]);
                 break;
             default:
-                return 1;
+                break;
         }
     }
 
