@@ -5,13 +5,13 @@
 using namespace std;
 
 int getValue(string label);
-void sum(int &a, int &b);
-void subtract(int &a, int &b);
-void mult(int &a, int &b);
-void divide(int &a, int &b);
+void sum(int &value);
+void subtract(int &value);
+void mult(int &value);
+void divide(int &value);
+void debugPrint(const string &operation, int &a, int &b);
 
 int main() {
-
     constexpr int size = 8;
     int myVector[size] = {};
 
@@ -24,16 +24,11 @@ int main() {
     cout << "Choose one option to change: ";
     cin >> op;
 
-    if (!op) {
-        return 1;
-    }
-
-    if (op >= size || size < 0) {
+    if (op <= 0 || op >= size) {
         return 1;
     }
 
     cout << "What operations you need?\n";
-
     cout << "1: sum\n";
     cout << "2: subtract\n";
     cout << "3: multiply\n";
@@ -45,24 +40,19 @@ int main() {
 
     switch (operandus) {
         case 1:
-            int a = getValue("add");
-            sum(a, myVector[op]);
+            sum(myVector[op]);
             break;
         case 2:
-            int b = getValue("subtract");
-            subtract(myVector[op], b);
+            subtract(myVector[op]);
             break;
         case 3:
-            int a = getValue("multiply");
-            mult(a, myVector[op]);
+            mult(myVector[op]);
             break;
         case 4:
-            int b = getValue("divide");
-            divide(myVector[op], b);
+            divide(myVector[op]);
             break;
         default:
             return 1;
-            break;
     }
 
     return 0;
@@ -77,39 +67,53 @@ int getValue(string label) {
     return input;
 }
 
-void sum(int &a, int &b) {
-
-#ifdef DEBUG
-
-#endif
-
-    a += b;
+void debugPrint(const string &operation, int &a, int &b) {
+    cout << "[DEBUG] Operation: " << operation << '\n';
+    cout << "[DEBUG] Operand A: " << a << '\n';
+    cout << "[DEBUG] Operand B: " << b << '\n';
+    cout << "[DEBUG] --------------------\n";
 }
 
-void subtract(int &a, int &b) {
+void sum(int &value) {
+    int operand = getValue("add");
 
-#ifdef DEBUG
-
+#if DEBUG
+    debugPrint("sum", value, operand);
 #endif
 
-    a -= b;
+    value += operand;
 }
 
-void mult(int &a, int &b) {
+void subtract(int &value) {
+    int operand = getValue("subtract");
 
-#ifdef DEBUG
-
+#if DEBUG
+    debugPrint("subtract", value, operand);
 #endif
 
-    a *= b;
+    value -= operand;
 }
 
-void divide(int &a, int &b) {
+void mult(int &value) {
+    int operand = getValue("multiply");
 
-#ifdef DEBUG
-
+#if DEBUG
+    debugPrint("multiply", value, operand);
 #endif
-    if (b != 0) {
-        a /= b;
+
+    value *= operand;
+}
+
+void divide(int &value) {
+    int operand = getValue("divide");
+
+#if DEBUG
+    debugPrint("divide", value, operand);
+#endif
+
+    if (operand != 0) {
+        value /= operand;
+    } else {
+        cout << "Error: division by zero.\n";
     }
 }
