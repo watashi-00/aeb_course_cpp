@@ -15,44 +15,53 @@ int main() {
     constexpr int size = 8;
     int myVector[size] = {};
 
-    for (int i = 0; i < size; i++) {
-        cout << "OP " + to_string(i) + ":\t";
-        cout << "[ " + to_string(myVector[i]) + " ]\n";
-    }
+    bool running = true;
 
-    int op;
-    cout << "Choose one option to change: ";
-    cin >> op;
+    while (running) {
 
-    if (op <= 0 || op >= size) {
-        return 1;
-    }
+        for (int i = 0; i < size; i++) {
+            cout << "OP " + to_string(i) + ":\t";
+            cout << "[ " + to_string(myVector[i]) + " ]\n";
+        }
 
-    cout << "What operations you need?\n";
-    cout << "1: sum\n";
-    cout << "2: subtract\n";
-    cout << "3: multiply\n";
-    cout << "4: divide\n";
-    cout << "> ";
+        int op;
+        cout << "Choose one option to change: ";
+        cin >> op;
 
-    int operandus;
-    cin >> operandus;
-
-    switch (operandus) {
-        case 1:
-            sum(myVector[op]);
-            break;
-        case 2:
-            subtract(myVector[op]);
-            break;
-        case 3:
-            mult(myVector[op]);
-            break;
-        case 4:
-            divide(myVector[op]);
-            break;
-        default:
+        if (op <= 0 || op >= size) {
             return 1;
+        }
+
+        cout << "What operations you need?\n";
+        cout << "0: exit\n";
+        cout << "1: sum\n";
+        cout << "2: subtract\n";
+        cout << "3: multiply\n";
+        cout << "4: divide\n";
+        cout << "> ";
+
+        int operandus;
+        cin >> operandus;
+
+        switch (operandus) {
+            case 0:
+                running = false;
+                break;
+            case 1:
+                sum(myVector[op]);
+                break;
+            case 2:
+                subtract(myVector[op]);
+                break;
+            case 3:
+                mult(myVector[op]);
+                break;
+            case 4:
+                divide(myVector[op]);
+                break;
+            default:
+                return 1;
+        }
     }
 
     return 0;
