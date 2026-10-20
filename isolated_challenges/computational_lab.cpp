@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #define DEBUG 1
 
@@ -11,6 +12,7 @@ void mult(int &value);
 void divide(int &value);
 void debugPrint(const string &operation, int &a, int &b);
 
+
 typedef struct vector_data_t {
     size_t  length;
     size_t  element_size;
@@ -22,7 +24,10 @@ typedef struct user_data_t {
     string  username;
 } UserData;
 
+int welcome_menu(UserData& user);
+int menu_0(UserData& user);
 int menu_1(UserData& user);
+
 
 int main() {
     constexpr int size = 8;
@@ -165,4 +170,31 @@ int menu_1(UserData& user) {
             default:
                 break;
         }
+        return 0x00;
+}
+
+int welcome_menu(UserData& user) {
+    cout << "================================\n";
+    cout << "       Welcome, " << user.username << "!\n";
+    cout << "================================\n\n";
+
+    menu_0(user);
+
+    cout << "\nPress ENTER to continue...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+
+    return 0;
+}
+
+int menu_0(UserData& user) {
+    cout << "User Information\n";
+    cout << "--------------------\n";
+    cout << "Username: " << user.username << '\n';
+    cout << "Vector length: " << user.vector->length << '\n';
+    cout << "Element size: " << user.vector->element_size << " bytes\n";
+    cout << "Vector address: " << user.vector->vector << '\n';
+    cout << "--------------------\n";
+
+    return 0;
 }
