@@ -28,11 +28,27 @@ int main() {
     constexpr int size = 8;
     int myVector[size] = {};
 
+    string username;
+    
+    cout<< "Write your name: ";
+    cin >> username;
+
+    VectorData vectorData {
+        .length = size,
+        .element_size = sizeof(int),
+        .vector = myVector
+    };
+
+    UserData userData {
+        .vector = &vectorData,
+        .username = username
+    };
+
+
     bool running = true;
 
     while (running) {
-
-        
+        menu_1(userData);
     }
 
     return 0;
