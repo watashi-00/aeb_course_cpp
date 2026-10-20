@@ -131,7 +131,7 @@ int menu_1(UserData& user) {
         cout << "Choose one option to change: ";
         cin >> op;
 
-        if (op <= 0 || op >= size) {
+        if (op < 0 || op >= size) {
             return 1;
         }
 
