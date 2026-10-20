@@ -13,6 +13,7 @@ void debugPrint(const string &operation, int &a, int &b);
 
 typedef struct vector_data_t {
     size_t  length;
+    size_t  element_size;
     void    *vector;
 } VectorData;
 
@@ -20,6 +21,8 @@ typedef struct user_data_t {
     VectorData *vector;
     string  username;
 } UserData;
+
+int menu_1(UserData& user);
 
 int main() {
     constexpr int size = 8;
@@ -29,49 +32,7 @@ int main() {
 
     while (running) {
 
-        for (int i = 0; i < size; i++) {
-            cout << "OP " + to_string(i) + ":\t";
-            cout << "[ " + to_string(myVector[i]) + " ]\n";
-        }
-
-        int op;
-        cout << "Choose one option to change: ";
-        cin >> op;
-
-        if (op <= 0 || op >= size) {
-            return 1;
-        }
-
-        cout << "What operations you need?\n";
-        cout << "0: exit\n";
-        cout << "1: sum\n";
-        cout << "2: subtract\n";
-        cout << "3: multiply\n";
-        cout << "4: divide\n";
-        cout << "> ";
-
-        int operandus;
-        cin >> operandus;
-
-        switch (operandus) {
-            case 0:
-                running = false;
-                break;
-            case 1:
-                sum(myVector[op]);
-                break;
-            case 2:
-                subtract(myVector[op]);
-                break;
-            case 3:
-                mult(myVector[op]);
-                break;
-            case 4:
-                divide(myVector[op]);
-                break;
-            default:
-                break;
-        }
+        
     }
 
     return 0;
@@ -139,4 +100,53 @@ void divide(int &value) {
     } else {
         cout << "Error: division by zero.\n";
     }
+}
+
+int menu_1(UserData& user) {
+    auto* myVector = static_cast<int*>(user.vector->vector);
+    const size_t size = user.vector->length;
+
+    for (int i = 0; i < size; i++) {
+            cout << "OP " + to_string(i) + ":\t";
+            cout << "[ " + to_string(myVector[i]) + " ]\n";
+        }
+
+        int op;
+        cout << "Choose one option to change: ";
+        cin >> op;
+
+        if (op <= 0 || op >= size) {
+            return 1;
+        }
+
+        cout << "What operations you need?\n";
+        cout << "0: exit\n";
+        cout << "1: sum\n";
+        cout << "2: subtract\n";
+        cout << "3: multiply\n";
+        cout << "4: divide\n";
+        cout << "> ";
+
+        int operandus;
+        cin >> operandus;
+
+        switch (operandus) {
+            case 0:
+                return 0xFF;
+                break;
+            case 1:
+                sum(myVector[op]);
+                break;
+            case 2:
+                subtract(myVector[op]);
+                break;
+            case 3:
+                mult(myVector[op]);
+                break;
+            case 4:
+                divide(myVector[op]);
+                break;
+            default:
+                break;
+        }
 }
