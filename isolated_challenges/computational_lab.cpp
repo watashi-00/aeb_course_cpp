@@ -11,6 +11,16 @@ void mult(int &value);
 void divide(int &value);
 void debugPrint(const string &operation, int &a, int &b);
 
+typedef struct vector_data_t {
+    size_t  length;
+    void    *vector;
+} VectorData;
+
+typedef struct user_data_t {
+    VectorData *vector;
+    string  username;
+} UserData;
+
 int main() {
     constexpr int size = 8;
     int myVector[size] = {};
